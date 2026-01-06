@@ -5,6 +5,6 @@ for i in range(len(array)):
     for j in range(i + 1, len(array)):
         if array[min_index] > array[j]:
             min_index = j
-    array[i], array[min_index] = array[min_index], array[i] # 스와이프
+    array[i], array[min_index] = array[min_index], array[i] # 스와프
    
 print(array)
