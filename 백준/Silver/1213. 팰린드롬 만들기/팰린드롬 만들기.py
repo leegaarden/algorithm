@@ -1,30 +1,26 @@
 from collections import Counter
-
 name = input()
-count = Counter(name)
+cnt = Counter(name)
+odd_char = []
 
-# 홀수 개인 문자 찾기
-odd_chars = []
-for char, cnt in count.items():
-    if cnt % 2 == 1:
-        odd_chars.append(char)
+for char, num in cnt.items():
+    if num % 2 == 1:
+        odd_char.append(char)
 
-# 홀수 개가 2개 이상이면 불가능
-if len(odd_chars) > 1:
+# 홀수개인 문자가 두 개 이상이면 팰린드롬 안 됨
+if len(odd_char) > 1: 
     print("I'm Sorry Hansoo")
 else:
     # 팰린드롬 만들기
     front = []
     middle = ''
     
-    # 알파벳 순으로 정렬
-    for char in sorted(count.keys()):
-        # 앞부분에 절반씩 추가
-        front.append(char * (count[char] // 2))
-        # 홀수 개면 가운데 문자로
-        if count[char] % 2 == 1:
+    for char in sorted(cnt.keys()):
+        # front에 절반씩 추가 
+        front.append(char * (cnt[char] // 2))
+        if cnt[char] % 2 == 1:
             middle = char
     
-    # 결과: 앞 + 가운데 + 앞의 역순
+    # 결과: front + middle + front 역순으로 출력
     result = ''.join(front) + middle + ''.join(front)[::-1]
     print(result)
